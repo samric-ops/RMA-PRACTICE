@@ -953,9 +953,10 @@ def compute_all_scores():
         total += score
     return scores, total
 
-# --- FOOTER: SUBMISSION AND RESULTS ---
+# --- FOOTER: SUBMISSION AND RESULTS (after Item 47) ---
 st.divider()
 
+# Submit button and summary placed after all tabs
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
     if st.button("✅ Complete Assessment", use_container_width=True):
