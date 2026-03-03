@@ -841,7 +841,7 @@ def score_item(item_key, ans, all_answers):
 
     # Item 34
     if item_key == "q34":
-        return 1 if ans == "b) 1450" else 0
+        return 1 if ans == "a) 1250" else 0
 
     # Item 35 (multiselect)
     if item_key == "q35":
