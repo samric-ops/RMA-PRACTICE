@@ -130,7 +130,7 @@ with st.sidebar:
     - `figure_10.png` - Rolling Wheel
     """)
 
-# --- MAIN TABS (identical to previous version) ---
+# --- MAIN TABS ---
 tabs = st.tabs(["Items 1-11", "Items 12-22", "Items 23-33", "Items 34-47"])
 
 # === TAB 1: Items 1-11 ===
@@ -143,10 +143,10 @@ with tabs[0]:
     st.latex(r"5 \times 5 - 6 \times 4")
     
     st.markdown("1. Your classmate said that each of the four expressions in Box 1 is equivalent to 1. Verify what your classmate said by showing your computation for the number expression $4 \\times 4 - 5 \\times 3$.")
-    st.text_area("Your computation for Item 1:", key="q1")
+    st.radio("Choose the correct result:", ["a) 1", "b) 2", "c) 0", "d) 3"], key="q1", index=None)
     
     st.markdown("2. What must be the next number expression to $5 \\times 5 - 6 \\times 4$ in Box 1?")
-    st.text_input("Answer for Item 2:", key="q2")
+    st.radio("Choose the next expression:", ["a) 6 × 6 - 7 × 5", "b) 7 × 7 - 8 × 6", "c) 5 × 5 - 6 × 4", "d) 8 × 8 - 9 × 7"], key="q2", index=None)
     
     st.markdown("3. Which of the following algebraic expressions represents the set of number expressions in Box 1? **(Select all that apply)**")
     st.multiselect("Select your answer(s):", [
@@ -158,10 +158,20 @@ with tabs[0]:
     ], key="q3")
     
     st.markdown("4. Explain or show why you think you have chosen the correct algebraic expressions for the set of number expressions in Box 1.")
-    st.text_area("Explanation for Item 4:", key="q4")
+    st.radio("Choose the best explanation:", [
+        "a) Because they all simplify to 1.",
+        "b) Because they generate the same numbers.",
+        "c) Because n represents the first number.",
+        "d) Because they are algebraic expressions."
+    ], key="q4", index=None)
     
     st.markdown("5. What does $n$ represent in your chosen expression in item 3?")
-    st.text_input("Answer for Item 5:", key="q5")
+    st.radio("Choose the correct meaning:", [
+        "a) The first number in each numerical expression (2,3,4,...)",
+        "b) The second number",
+        "c) The result",
+        "d) The exponent"
+    ], key="q5", index=None)
     
     st.divider()
     st.subheader("Powers and Rational Numbers")
@@ -177,23 +187,53 @@ with tabs[0]:
     """)
     
     st.markdown("6. Show that 1024 is a power of 2. [Refer to Table 1]")
-    st.text_area("Show solution for Item 6:", key="q6")
+    st.radio("Which shows 1024 as a power of 2?", [
+        "a) 1024 = 2¹⁰",
+        "b) 1024 = 2⁹",
+        "c) 1024 = 2⁸",
+        "d) 1024 = 2⁷"
+    ], key="q6", index=None)
     
     st.markdown("7. Write the exponential form of 1024.")
-    st.text_input("Answer for Item 7:", key="q7")
+    st.radio("Exponential form:", [
+        "a) 2¹⁰",
+        "b) 2⁹",
+        "c) 2⁸",
+        "d) 2⁷"
+    ], key="q7", index=None)
     
     st.markdown("8. Find a number that is a power of 2 that meets **BOTH** of these conditions:")
     st.markdown("* The number is a multiple of 16.  \n* The number is also more than 50 but less than 200.")
-    st.text_input("Answer for Item 8:", key="q8")
+    st.radio("Choose the correct number:", [
+        "a) 64",
+        "b) 128",
+        "c) 32",
+        "d) 256"
+    ], key="q8", index=None)
     
     st.markdown("9. Is there a number between 0.998 and 0.999? If YES, give one example. If NO, explain why you think so.")
-    st.text_area("Answer/Explanation for Item 9:", key="q9")
+    st.radio("Choose a correct example:", [
+        "a) 0.9985",
+        "b) 0.998",
+        "c) 0.999",
+        "d) 0.9991"
+    ], key="q9", index=None)
     
     st.markdown("10. Show how you will subtract 0.998 from 0.999.")
-    st.text_area("Solution for Item 10:", key="q10")
+    st.radio("What is the result?", [
+        "a) 0.001",
+        "b) 0.0001",
+        "c) 0.01",
+        "d) 0.1"
+    ], key="q10", index=None)
     
     st.markdown("11. Is there a fraction that is greater than $\\frac{3}{4}$ but less than 1? If YES, give one example. If NO, explain why you think so.")
-    st.text_area("Answer/Explanation for Item 11:", key="q11")
+    st.radio("Choose a correct fraction:", [
+        "a) 7/8",
+        "b) 3/4",
+        "c) 1/2",
+        "d) 1"
+    ], key="q11", index=None)
 
 # === TAB 2: Items 12-22 ===
 with tabs[1]:
@@ -205,10 +245,20 @@ with tabs[1]:
         display_figure(1, "Absences vs Academic Grade", "figure_1.png")
     
     st.markdown("12. How many students had an overall academic grade below 84? [Refer to Figure 1]")
-    st.number_input("Count for Item 12:", step=1, key="q12")
+    st.radio("Number of students:", [
+        "a) 5",
+        "b) 4",
+        "c) 6",
+        "d) 7"
+    ], key="q12", index=None)
     
     st.markdown("13. Explain why you think your answer in item 12 is correct based on the information shown in the graph in Figure 1.")
-    st.text_area("Explanation for Item 13:", key="q13")
+    st.radio("Best explanation:", [
+        "a) There are five points with y‑coordinates below 84.",
+        "b) The x‑coordinate of the point with y=84 is 5.",
+        "c) There are four points below the line.",
+        "d) The graph shows five absences."
+    ], key="q13", index=None)
     
     st.markdown("14. Which of the following can be a correct interpretation of the data presented in the graph in Figure 1? **(Select all that apply)**")
     st.multiselect("Options for Item 14:", [
@@ -226,10 +276,20 @@ with tabs[1]:
         display_figure(2, "Monthly Family Income", "figure_2.png")
     
     st.markdown("15. Based on the graph in Figure 2, which of the two puroks shows more diversity in monthly family income? Explain or justify your answer.")
-    st.text_area("Answer for Item 15:", key="q15")
+    st.radio("Choose the correct statement:", [
+        "a) Purok 1, because its income range is larger.",
+        "b) Purok 2, because its incomes are more spread out.",
+        "c) Purok 1, because it has more bars.",
+        "d) Purok 2, because it has higher incomes."
+    ], key="q15", index=None)
     
     st.markdown("16. The average monthly income of the families in Purok 1 and Purok 2 are equal. Should both purok be given the same amount of financial aid? What information in the graph in Figure 2 did you base your decision on?")
-    st.text_area("Answer for Item 16:", key="q16")
+    st.radio("Choose the best decision and reason:", [
+        "a) No, because Purok 1 has greater variability, so the average doesn't reflect most families.",
+        "b) Yes, because they have the same average.",
+        "c) No, because Purok 2 has more families.",
+        "d) Yes, because both have same total income."
+    ], key="q16", index=None)
     
     st.divider()
     st.subheader("Probability and Tables")
@@ -245,16 +305,36 @@ with tabs[1]:
     """)
     
     st.markdown("17. How many students participated in the music activity?")
-    st.number_input("Count for Item 17:", step=1, key="q17")
+    st.radio("Number:", [
+        "a) 49",
+        "b) 60",
+        "c) 18",
+        "d) 31"
+    ], key="q17", index=None)
     
     st.markdown("18. How many students did not participate in any of the two activities?")
-    st.number_input("Count for Item 18:", step=1, key="q18")
+    st.radio("Number:", [
+        "a) 19",
+        "b) 50",
+        "c) 61",
+        "d) 18"
+    ], key="q18", index=None)
     
     st.markdown("19. What is the probability of selecting a student who participated in both music and sports activities?")
-    st.text_input("Answer for Item 19 (as fraction or decimal):", key="q19")
+    st.radio("Probability:", [
+        "a) 18/110",
+        "b) 49/110",
+        "c) 60/110",
+        "d) 31/110"
+    ], key="q19", index=None)
     
     st.markdown("20. Write a question that can be answered using the information in Table 2.")
-    st.text_input("Question for Item 20:", key="q20")
+    st.radio("Choose a question that can be answered:", [
+        "a) How many students participated only in music?",
+        "b) Why did students not participate?",
+        "c) What is the average age of participants?",
+        "d) How many students are in Grade 7?"
+    ], key="q20", index=None)
     
     st.divider()
     st.subheader("Coordinates")
@@ -274,7 +354,12 @@ with tabs[1]:
     ], key="q21")
     
     st.markdown("22. What is the position of point G in Figure 3?")
-    st.text_input("Answer for Item 22:", key="q22")
+    st.radio("Position of G:", [
+        "a) 0",
+        "b) 100",
+        "c) 200",
+        "d) -100"
+    ], key="q22", index=None)
 
 # === TAB 3: Items 23-33 ===
 with tabs[2]:
@@ -286,7 +371,12 @@ with tabs[2]:
         display_figure(4, "Cartesian Grid", "figure_4.png")
     
     st.markdown("23. What are the coordinates of Point C in Figure 4?")
-    st.text_input("Coordinates (x, y) for Item 23:", key="q23")
+    st.radio("Coordinates:", [
+        "a) (4,4)",
+        "b) (3,4)",
+        "c) (4,3)",
+        "d) (5,5)"
+    ], key="q23", index=None)
     
     st.markdown("24. A line is drawn passing through points B and C in Figure 4. Select two ordered pairs that represent the coordinates of points that are also in this line. **(Select exactly two)**")
     st.multiselect("Select points for Item 24:", [
@@ -308,13 +398,28 @@ with tabs[2]:
     ], key="q25")
     
     st.markdown("26. In Figure 4, connecting the points A, B and C will form a triangle, called triangle ABC. What is the area of triangle ABC? Show your method for getting the area.")
-    st.text_area("Solution for Item 26:", key="q26")
+    st.radio("Area of triangle ABC:", [
+        "a) 12 square units",
+        "b) 10 square units",
+        "c) 14 square units",
+        "d) 8 square units"
+    ], key="q26", index=None)
     
     st.markdown("27. A point represents position. Suppose in Figure 4, point A represents the position of your house, point B represents the position of your school and point C represents the position of the barangay hall. There is a straight road that you can take to the school and the barangay hall from your house. Which is the shorter walk from your house, going to the school or to the barangay hall?")
-    st.text_input("Answer for Item 27:", key="q27")
+    st.radio("Shorter walk:", [
+        "a) School",
+        "b) Barangay hall",
+        "c) They are equal",
+        "d) Cannot determine"
+    ], key="q27", index=None)
     
     st.markdown("28. Show or explain how you determined your answer in item 27.")
-    st.text_area("Explanation for Item 28:", key="q28")
+    st.radio("Best explanation:", [
+        "a) Using distance formula, AB is shorter.",
+        "b) By measuring with a ruler.",
+        "c) Because the school is closer.",
+        "d) Because the barangay hall is farther."
+    ], key="q28", index=None)
     
     st.divider()
     st.subheader("Algebraic Reasoning")
@@ -336,7 +441,12 @@ with tabs[2]:
     st.markdown("*In Box 2 above, let a represent the number in the first blank space, and b represent the number in the second blank space.*")
     
     st.markdown("31. Write two possible values for $a$ and $b$ that will make the equation in Box 2 true.")
-    st.text_input("Values for Item 31 (format: a, b):", key="q31")
+    st.radio("Which pair satisfies 17 + a = b + 3 ?", [
+        "a) a=0, b=14",
+        "b) a=1, b=15",
+        "c) a=2, b=16",
+        "d) All of the above"
+    ], key="q31", index=None)
     
     st.markdown("32. Which statement is always true about $a$ and $b$? [Refer to Box 2] **(Select all that apply)**")
     st.multiselect("Options for Item 32:", [
@@ -372,7 +482,12 @@ with tabs[3]:
         display_figure(5, "Tricycle Rental Cost Graph", "figure_5.png")
     
     st.markdown("34. How much does it cost to rent the tricycle for 5 days? [Refer to Figure 5]")
-    st.text_input("Answer for Item 34:", key="q34")
+    st.radio("Cost for 5 days:", [
+        "a) 1250",
+        "b) 1450",
+        "c) 1350",
+        "d) 1550"
+    ], key="q34", index=None)
     
     st.markdown("35. What does the number 250 in the formula represent? [Refer to Figure 5] **(Select all that apply)**")
     st.multiselect("Options for Item 35:", [
@@ -383,7 +498,12 @@ with tabs[3]:
     ], key="q35")
     
     st.markdown("36. In Figure 5, what does the number 200 in the formula represent?")
-    st.text_input("Answer for Item 36:", key="q36")
+    st.radio("200 represents:", [
+        "a) Fixed cost",
+        "b) Daily rate",
+        "c) Total cost",
+        "d) Number of days"
+    ], key="q36", index=None)
     
     st.markdown("37. What aspect of the graph in Figure 5 represents the 200 in the formula? **(Select all that apply)**")
     st.multiselect("Options for Item 37:", [
@@ -446,7 +566,12 @@ with tabs[3]:
     ], key="q41")
     
     st.markdown("42. In Figure 7, are the sides of the triangular dog house proportional to the sides of the triangular toy storage? Show your solution or explain your answer.")
-    st.text_area("Answer for Item 42:", key="q42")
+    st.radio("Are they proportional?", [
+        "a) Yes, because the triangles are similar (parallel sides).",
+        "b) No, because the sizes are different.",
+        "c) Yes, because they are both triangles.",
+        "d) No, because the ratios are not equal."
+    ], key="q42", index=None)
     
     st.markdown("43. The base of the toy storage measures 25 centimeters. What are the lengths of its other two sides? [Refer to Figure 7] **(Select all that apply)**")
     st.multiselect("Options for Item 43:", [
@@ -469,7 +594,12 @@ with tabs[3]:
         display_figure(9, "Pool Depth Diagram", "figure_9.png")
     
     st.markdown("44. What is the area of the sidewalk in square meters surrounding the pool? Show your solution. [Refer to Figure 8] Use $\\pi = 3.14$.")
-    st.text_area("Solution for Item 44:", key="q44")
+    st.radio("Area of sidewalk:", [
+        "a) 34.54 sq m",
+        "b) 31.4 sq m",
+        "c) 28.26 sq m",
+        "d) 37.68 sq m"
+    ], key="q44", index=None)
     
     # Item 45 (two-column layout)
     st.markdown("45. The park management decides to divide the pool into two equal parts. One part will be designated for adults and has a depth of 1.5 meters, while the other part will be designated for children and has a depth of 0.6 meters. Which of the following will give the total volume of water in the pool? [Refer to Figure 9] **(Select all that apply)**")
@@ -514,10 +644,20 @@ with tabs[3]:
         display_figure(10, "Rolling Wheel", "figure_10.png")
     
     st.markdown("46. The wheel in Figure 10 is rolled exactly 5 times. Show how you can compute the distance travelled by the wheel.")
-    st.text_area("Solution for Item 46:", key="q46")
+    st.radio("Distance travelled:", [
+        "a) 942 cm",
+        "b) 300π cm",
+        "c) 188.4 cm",
+        "d) Both a and b are correct"
+    ], key="q46", index=None)
     
     st.markdown("47. How many degrees did the wheel's pin rotate after 5 rolls? [Refer to Figure 10]")
-    st.text_input("Answer for Item 47:", key="q47")
+    st.radio("Degrees rotated:", [
+        "a) 1800°",
+        "b) 360°",
+        "c) 720°",
+        "d) 900°"
+    ], key="q47", index=None)
 
 # =============================================================================
 # SCORING ENGINE (based on official RMA scoring guide)
@@ -529,24 +669,13 @@ def score_item(item_key, ans, all_answers):
     if ans is None or ans == "" or (isinstance(ans, list) and len(ans)==0):
         return 0
 
-    # Item 1 (text area)
+    # Item 1
     if item_key == "q1":
-        s = ans.strip().lower()
-        # Full credit (2): correct computation "16 - 15 = 1" or similar
-        if re.search(r"16\s*[-–—]\s*15\s*=\s*1", s) or "16-15=1" in s:
-            return 2
-        # Partial (1): shows "4 x 4 - 5 x 3 = 1" or "16-15 only"
-        if re.search(r"4\s*x\s*4\s*[-–—]\s*5\s*x\s*3\s*=\s*1", s) or "16-15" in s:
-            return 1
-        return 0
+        return 2 if ans == "a) 1" else 0
 
-    # Item 2 (text input)
+    # Item 2
     if item_key == "q2":
-        # Accept any expression of form "6×6−7×5" with possible variations
-        s = ans.strip().lower().replace(" ", "")
-        if re.match(r"6[×x*]6[-–—]7[×x*]5", s):
-            return 1
-        return 0
+        return 1 if ans == "a) 6 × 6 - 7 × 5" else 0
 
     # Item 3 (multiselect)
     if item_key == "q3":
@@ -558,97 +687,45 @@ def score_item(item_key, ans, all_answers):
             return 1
         return 0
 
-    # Item 4 (text area)
+    # Item 4
     if item_key == "q4":
-        s = ans.strip().lower()
-        # Full (2): explanation that chosen expression simplifies to 1
-        if re.search(r"simplif(?:y|ies|ication).*1", s) or re.search(r"=\s*1", s):
-            return 2
-        # Partial (1): used expression to generate at least one number expression
-        if "n=2" in s or "n = 2" in s or "substitut" in s:
-            return 1
-        return 0
+        return 2 if ans == "a) Because they all simplify to 1." else 0
 
-    # Item 5 (text input) – depends on q3 choice
+    # Item 5
     if item_key == "q5":
-        q3_ans = all_answers.get("q3", [])
-        if not q3_ans:
-            return 0
-        chosen = set(q3_ans)
-        s = ans.strip().lower()
-        if "b. (n)(n) - [(n + 1)(n - 1)]" in chosen:
-            if "first" in s or "starting" in s or re.search(r"n\s*=\s*2", s):
-                return 1
-        if "c. (n - 1)(n - 1) - n(n - 2)" in chosen:
-            if "third" in s or re.search(r"n\s*=\s*3", s):
-                return 1
-        return 0
+        return 1 if ans == "a) The first number in each numerical expression (2,3,4,...)" else 0
 
-    # Item 6 (text area)
+    # Item 6
     if item_key == "q6":
-        s = ans.strip().lower()
-        if re.search(r"2\s*[\^⁰]?\s*10", s) or "2¹⁰" in s or "2^10" in s:
-            return 2
-        if "64 x 16" in s or "32 x 32" in s or re.search(r"2\s*\^\s*6\s*x\s*2\s*\^\s*4", s):
-            return 2
-        if re.search(r"2\s*x\s*2\s*x\s*2", s) and "1024" in s:
-            return 1
-        return 0
+        return 2 if ans == "a) 1024 = 2¹⁰" else 0
 
-    # Item 7 (text input)
+    # Item 7
     if item_key == "q7":
-        a = ans.strip()
-        if a in ["2¹⁰", "2^10", "2**10", "2 10", "2¹⁰"]:
-            return 1
-        return 0
+        return 1 if ans == "a) 2¹⁰" else 0
 
-    # Item 8 (text input)
+    # Item 8 (two correct options)
     if item_key == "q8":
-        a = ans.strip()
-        if a in ["64", "128"]:
-            return 1
-        return 0
+        return 1 if ans in ["a) 64", "b) 128"] else 0
 
-    # Item 9 (text area)
+    # Item 9
     if item_key == "q9":
-        s = ans.strip().lower()
-        if "yes" in s or "oo" in s:
-            nums = re.findall(r"0\.998\d+", s)
-            if nums:
-                return 1
-        return 0
+        return 1 if ans == "a) 0.9985" else 0
 
-    # Item 10 (text area)
+    # Item 10
     if item_key == "q10":
-        s = ans.strip().lower()
-        if re.search(r"0\.999\s*[-–—]\s*0\.998\s*=\s*0\.001", s):
-            return 2
-        if re.search(r"0\.999\s*[-–—]\s*0\.998", s):
-            return 1
-        return 0
+        return 2 if ans == "a) 0.001" else 0
 
-    # Item 11 (text area)
+    # Item 11
     if item_key == "q11":
-        s = ans.strip().lower()
-        if re.search(r"(7/8|4/5|5/6|6/7|8/9|9/10)", s) and ("because" in s or "since" in s or "convert" in s):
-            return 2
-        if re.search(r"(7/8|4/5|5/6|6/7|8/9|9/10)", s):
-            return 1
-        return 0
+        return 2 if ans == "a) 7/8" else 0
 
-    # Item 12 (number input)
+    # Item 12
     if item_key == "q12":
-        try:
-            return 1 if int(ans) == 5 else 0
-        except:
-            return 0
+        return 1 if ans == "a) 5" else 0
 
-    # Item 13 (text area)
+    # Item 13
     if item_key == "q13":
-        s = ans.strip().lower()
-        if "5" in s and ("point" in s or "below" in s):
-            return 1
-        return 0
+        return 1 if ans == "a) There are five points with y‑coordinates below 84." else 0
 
     # Item 14 (multiselect)
     if item_key == "q14":
@@ -662,57 +739,29 @@ def score_item(item_key, ans, all_answers):
             return 1
         return 0
 
-    # Item 15 (text area)
+    # Item 15
     if item_key == "q15":
-        s = ans.strip().lower()
-        if "purok 1" in s and ("range" in s or "difference" in s or "max" in s or "min" in s):
-            return 2
-        if "purok 1" in s and ("bar" in s or "spread" in s):
-            return 1
-        return 0
+        return 2 if ans == "a) Purok 1, because its income range is larger." else 0
 
-    # Item 16 (text area)
+    # Item 16
     if item_key == "q16":
-        s = ans.strip().lower()
-        if "variab" in s or "spread" in s or "range" in s or "divers" in s:
-            return 2
-        if "average" in s or "mean" in s or "equal" in s:
-            return 1
-        return 0
+        return 2 if ans == "a) No, because Purok 1 has greater variability, so the average doesn't reflect most families." else 0
 
-    # Item 17 (number input)
+    # Item 17
     if item_key == "q17":
-        try:
-            return 1 if int(ans) == 49 else 0
-        except:
-            return 0
+        return 1 if ans == "a) 49" else 0
 
-    # Item 18 (number input)
+    # Item 18
     if item_key == "q18":
-        try:
-            return 1 if int(ans) == 19 else 0
-        except:
-            return 0
+        return 1 if ans == "a) 19" else 0
 
-    # Item 19 (text input)
+    # Item 19
     if item_key == "q19":
-        s = ans.strip().lower().replace(" ", "")
-        if s in ["18/110", "9/55", "0.1636", "0.16", "0.163636"]:
-            return 1
-        if re.search(r"0\.163\d*", s):
-            return 1
-        return 0
+        return 1 if ans == "a) 18/110" else 0
 
-    # Item 20 (text input)
+    # Item 20
     if item_key == "q20":
-        q = ans.strip().lower()
-        if "venn" in q or "diagram" in q or "new student" in q or "affect" in q:
-            return 3
-        if "probability" in q or "chance" in q:
-            return 2
-        if "how many" in q and ("participated" in q or "did not" in q):
-            return 1
-        return 0
+        return 1 if ans == "a) How many students participated only in music?" else 0
 
     # Item 21 (multiselect)
     if item_key == "q21":
@@ -720,17 +769,15 @@ def score_item(item_key, ans, all_answers):
         correct = {"c. Point F is at -300"}
         return 1 if user_set == correct else 0
 
-    # Item 22 (text input)
+    # Item 22
     if item_key == "q22":
-        return 1 if ans.strip() == "0" else 0
+        return 1 if ans == "a) 0" else 0
 
-    # Item 23 (text input)
+    # Item 23
     if item_key == "q23":
-        if re.match(r"\s*\(\s*4\s*,\s*4\s*\)\s*", ans):
-            return 1
-        return 0
+        return 1 if ans == "a) (4,4)" else 0
 
-    # Item 24 (multiselect, max 2)
+    # Item 24 (multiselect)
     if item_key == "q24":
         user_set = set(ans) if isinstance(ans, list) else set()
         correct_options = {"b. (1, -2)", "d. (3, 2)", "f. (5, 6)"}
@@ -746,30 +793,17 @@ def score_item(item_key, ans, all_answers):
         correct = {"e. (x, -x + 2)"}
         return 1 if user_set == correct else 0
 
-    # Item 26 (text area)
+    # Item 26
     if item_key == "q26":
-        s = ans.strip().lower()
-        if "12" in s and ("method" in s or "formula" in s or "½" in s or "half" in s):
-            return 2
-        if "12" in s:
-            return 1
-        return 0
+        return 2 if ans == "a) 12 square units" else 0
 
-    # Item 27 (text input)
+    # Item 27
     if item_key == "q27":
-        s = ans.strip().lower()
-        if "school" in s or "b" in s or "a to b" in s:
-            return 1
-        return 0
+        return 1 if ans == "a) School" else 0
 
-    # Item 28 (text area)
+    # Item 28
     if item_key == "q28":
-        s = ans.strip().lower()
-        if "distance" in s or "pythagorean" in s or "circle" in s or "radius" in s:
-            return 2
-        if "paper" in s or "pencil" in s or "compare" in s:
-            return 1
-        return 0
+        return 2 if ans == "a) Using distance formula, AB is shorter." else 0
 
     # Item 29 (multiselect)
     if item_key == "q29":
@@ -793,28 +827,9 @@ def score_item(item_key, ans, all_answers):
             return 1
         return 0
 
-    # Item 31 (text input)
+    # Item 31
     if item_key == "q31":
-        s = ans.strip()
-        # try to extract numbers
-        nums = re.findall(r"[-+]?\d+", s)
-        if len(nums) >= 2:
-            try:
-                a = int(nums[0])
-                b = int(nums[1])
-                if b == a + 14:
-                    return 2
-            except:
-                pass
-        pairs = re.findall(r"a\s*=\s*(\d+)\s*,\s*b\s*=\s*(\d+)", s.lower())
-        for a_str, b_str in pairs:
-            if int(b_str) == int(a_str) + 14:
-                return 2
-        if len(pairs) == 1:
-            a, b = int(pairs[0][0]), int(pairs[0][1])
-            if b == a + 14:
-                return 1
-        return 0
+        return 2 if ans == "d) All of the above" else 0
 
     # Item 32 (multiselect)
     if item_key == "q32":
@@ -828,26 +843,19 @@ def score_item(item_key, ans, all_answers):
         correct = {"c. If we add 3y to both sides of equation ①, the equation will remain true."}
         return 1 if user_set == correct else 0
 
-    # Item 34 (text input)
+    # Item 34
     if item_key == "q34":
-        s = ans.strip().replace(",", "")
-        try:
-            return 1 if int(s) == 1250 else 0
-        except:
-            return 1 if s == "1250" else 0
+        return 1 if ans == "a) 1250" else 0
 
     # Item 35 (multiselect)
     if item_key == "q35":
         user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"a. The daily cost of renting the tricycle."}
+        correct = {"a. The daily cost of renting the tricycle."}  # according to rubric, but check
         return 1 if user_set == correct else 0
 
-    # Item 36 (text input)
+    # Item 36
     if item_key == "q36":
-        s = ans.strip().lower()
-        if "fixed" in s or "initial" in s or "constant" in s:
-            return 1
-        return 0
+        return 1 if ans == "a) Fixed cost" else 0
 
     # Item 37 (multiselect)
     if item_key == "q37":
@@ -855,7 +863,7 @@ def score_item(item_key, ans, all_answers):
         correct = {"b. y-intercept"}
         return 1 if user_set == correct else 0
 
-    # Item 38 (multiselect, max 2)
+    # Item 38 (multiselect)
     if item_key == "q38":
         user_set = set(ans) if isinstance(ans, list) else set()
         correct = {"a. q = 10 and r = 140", "e. q = 100 and r = 50"}
@@ -884,8 +892,7 @@ def score_item(item_key, ans, all_answers):
                    "d. The measure of the exterior angle of a triangle is equal to the sum of the two remote interior angles."}
         if user_set == correct:
             return 2
-        if user_set == {"c. The exterior angle and one of the interior angles adjacent to it form a linear pair."} or \
-           user_set == {"d. The measure of the exterior angle of a triangle is equal to the sum of the two remote interior angles."}:
+        if user_set == {"c. ..."} or user_set == {"d. ..."}:
             return 1
         return 0
 
@@ -895,12 +902,9 @@ def score_item(item_key, ans, all_answers):
         correct = {"a. The other two sides are 1.5 meters each."}
         return 1 if user_set == correct else 0
 
-    # Item 42 (text area)
+    # Item 42
     if item_key == "q42":
-        s = ans.strip().lower()
-        if "yes" in s and ("similar" in s or "proportional" in s or "parallel" in s):
-            return 2
-        return 0
+        return 2 if ans == "a) Yes, because the triangles are similar (parallel sides)." else 0
 
     # Item 43 (multiselect)
     if item_key == "q43":
@@ -908,16 +912,9 @@ def score_item(item_key, ans, all_answers):
         correct = {"a. The other two sides are 37.5 centimeters each."}
         return 1 if user_set == correct else 0
 
-    # Item 44 (text area)
+    # Item 44
     if item_key == "q44":
-        s = ans.strip().lower()
-        if "34.54" in s and ("6²" in s or "36" in s) and ("5²" in s or "25" in s):
-            return 3
-        if "34.54" in s:
-            return 2
-        if ("6²" in s or "36" in s) or ("5²" in s or "25" in s):
-            return 1
-        return 0
+        return 3 if ans == "a) 34.54 sq m" else 0
 
     # Item 45 (list from checkboxes)
     if item_key == "q45":
@@ -925,27 +922,13 @@ def score_item(item_key, ans, all_answers):
         correct = {"d. (25π(2.1))/2 cubic meters"}
         return 1 if user_set == correct else 0
 
-    # Item 46 (text area)
+    # Item 46
     if item_key == "q46":
-        s = ans.strip().lower()
-        if "circumference" in s and ("5" in s) and ("942" in s or "300π" in s):
-            return 2
-        if "942" in s or "300π" in s:
-            return 1
-        return 0
+        return 2 if ans == "d) Both a and b are correct" else 0
 
-    # Item 47 (text input)
+    # Item 47
     if item_key == "q47":
-        s = ans.strip().lower().replace("°", "")
-        try:
-            val = int(s)
-            if val == 1800:
-                return 2
-        except:
-            pass
-        if "360" in s and "5" in s and ("x" in s or "*" in s):
-            return 1
-        return 0
+        return 2 if ans == "a) 1800°" else 0
 
     return 0
 
@@ -976,7 +959,7 @@ with col2:
             st.success("Responses submitted successfully!")
             
             scores, total_score = compute_all_scores()
-            max_possible = 71  # from scoring guide sum
+            max_possible = 72  # from scoring guide sum
             
             st.subheader("📋 Assessment Summary")
             st.write(f"**Student:** {st.session_state.surname}, {st.session_state.given_name} {st.session_state.middle_name}")
