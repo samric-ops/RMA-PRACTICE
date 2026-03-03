@@ -61,6 +61,293 @@ if 'given_name' not in st.session_state:
 if 'middle_name' not in st.session_state:
     st.session_state.middle_name = ""
 
+# =============================================================================
+# SCORING ENGINE (based on official RMA scoring guide)
+# =============================================================================
+def score_item(item_key, ans, all_answers):
+    """Return points earned for a given item (0,1,2,3)."""
+    # Helper to check if answer is empty
+    if ans is None or ans == "" or (isinstance(ans, list) and len(ans)==0):
+        return 0
+
+    # Item 1
+    if item_key == "q1":
+        return 2 if ans == "a) 1" else 0
+
+    # Item 2
+    if item_key == "q2":
+        return 1 if ans == "b) 6 × 6 - 7 × 5" else 0
+
+    # Item 3 (multiselect)
+    if item_key == "q3":
+        correct_set = {"b. (n)(n) - [(n + 1)(n - 1)]", "c. (n - 1)(n - 1) - n(n - 2)"}
+        user_set = set(ans) if isinstance(ans, list) else set()
+        if user_set == correct_set:
+            return 2
+        if user_set == {"b. (n)(n) - [(n + 1)(n - 1)]"} or user_set == {"c. (n - 1)(n - 1) - n(n - 2)"}:
+            return 1
+        return 0
+
+    # Item 4
+    if item_key == "q4":
+        return 2 if ans == "c) Because they all simplify to 1." else 0
+
+    # Item 5
+    if item_key == "q5":
+        return 1 if ans == "d) The first number in each numerical expression (2,3,4,...)" else 0
+
+    # Item 6
+    if item_key == "q6":
+        return 2 if ans == "a) 1024 = 2¹⁰" else 0
+
+    # Item 7
+    if item_key == "q7":
+        return 1 if ans == "b) 2¹⁰" else 0
+
+    # Item 8 (two correct options)
+    if item_key == "q8":
+        return 1 if ans in ["b) 64", "c) 128"] else 0
+
+    # Item 9
+    if item_key == "q9":
+        return 1 if ans == "a) 0.9985" else 0
+
+    # Item 10
+    if item_key == "q10":
+        return 2 if ans == "b) 0.001" else 0
+
+    # Item 11
+    if item_key == "q11":
+        return 2 if ans == "c) 7/8" else 0
+
+    # Item 12
+    if item_key == "q12":
+        return 1 if ans == "d) 5" else 0
+
+    # Item 13
+    if item_key == "q13":
+        return 1 if ans == "a) There are five points with y‑coordinates below 84." else 0
+
+    # Item 14 (multiselect)
+    if item_key == "q14":
+        correct_set = {"b. As the number of absences decreases, the overall academic grade increases.",
+                       "c. As the number of absences increases, the overall academic grade decreases."}
+        user_set = set(ans) if isinstance(ans, list) else set()
+        if user_set == correct_set:
+            return 2
+        if user_set == {"b. As the number of absences decreases, the overall academic grade increases."} or \
+           user_set == {"c. As the number of absences increases, the overall academic grade decreases."}:
+            return 1
+        return 0
+
+    # Item 15
+    if item_key == "q15":
+        return 2 if ans == "b) Purok 1, because its income range is larger." else 0
+
+    # Item 16
+    if item_key == "q16":
+        return 2 if ans == "c) No, because Purok 1 has greater variability, so the average doesn't reflect most families." else 0
+
+    # Item 17
+    if item_key == "q17":
+        return 1 if ans == "d) 49" else 0
+
+    # Item 18
+    if item_key == "q18":
+        return 1 if ans == "a) 19" else 0
+
+    # Item 19
+    if item_key == "q19":
+        return 1 if ans == "b) 18/110" else 0
+
+    # Item 20
+    if item_key == "q20":
+        return 1 if ans == "c) How many students participated only in music?" else 0
+
+    # Item 21 (multiselect)
+    if item_key == "q21":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct = {"c. Point F is at -300"}
+        return 1 if user_set == correct else 0
+
+    # Item 22
+    if item_key == "q22":
+        return 1 if ans == "d) 0" else 0
+
+    # Item 23
+    if item_key == "q23":
+        return 1 if ans == "a) (4,4)" else 0
+
+    # Item 24 (multiselect)
+    if item_key == "q24":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct_options = {"b. (1, -2)", "d. (3, 2)", "f. (5, 6)"}
+        if len(user_set) == 2 and user_set.issubset(correct_options):
+            return 2
+        if len(user_set) == 1 and user_set.issubset(correct_options):
+            return 1
+        return 0
+
+    # Item 25 (multiselect)
+    if item_key == "q25":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct = {"e. (x, -x + 2)"}
+        return 1 if user_set == correct else 0
+
+    # Item 26
+    if item_key == "q26":
+        return 2 if ans == "b) 12 square units" else 0
+
+    # Item 27
+    if item_key == "q27":
+        return 1 if ans == "c) School" else 0
+
+    # Item 28
+    if item_key == "q28":
+        return 2 if ans == "d) Using distance formula, AB is shorter." else 0
+
+    # Item 29 (multiselect)
+    if item_key == "q29":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct = {"-5", "-27", "99"}
+        if user_set == correct:
+            return 3
+        if len(user_set) == 2 and user_set.issubset(correct):
+            return 2
+        if len(user_set) == 1 and user_set.issubset(correct):
+            return 1
+        return 0
+
+    # Item 30 (multiselect)
+    if item_key == "q30":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct = {"d. cost = 100n/3", "e. 3 : 100 = n : cost"}
+        if user_set == correct:
+            return 2
+        if user_set == {"d. cost = 100n/3"} or user_set == {"e. 3 : 100 = n : cost"}:
+            return 1
+        return 0
+
+    # Item 31
+    if item_key == "q31":
+        return 2 if ans == "d) All of the above" else 0
+
+    # Item 32 (multiselect)
+    if item_key == "q32":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct = {"c. The difference between b and a, (b-a), is 14."}
+        return 1 if user_set == correct else 0
+
+    # Item 33 (multiselect)
+    if item_key == "q33":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct = {"c. If we add 3y to both sides of equation ①, the equation will remain true."}
+        return 1 if user_set == correct else 0
+
+    # Item 34
+    if item_key == "q34":
+        return 1 if ans == "a) 1250" else 0
+
+    # Item 35 (multiselect)
+    if item_key == "q35":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct = {"a. The daily cost of renting the tricycle."}
+        return 1 if user_set == correct else 0
+
+    # Item 36
+    if item_key == "q36":
+        return 1 if ans == "b) Fixed cost" else 0
+
+    # Item 37 (multiselect)
+    if item_key == "q37":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct = {"b. y-intercept"}
+        return 1 if user_set == correct else 0
+
+    # Item 38 (multiselect)
+    if item_key == "q38":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct = {"a. q = 10 and r = 140", "e. q = 100 and r = 50"}
+        if user_set == correct:
+            return 2
+        if user_set == {"a. q = 10 and r = 140"} or user_set == {"e. q = 100 and r = 50"}:
+            return 1
+        return 0
+
+    # Item 39 (multiselect)
+    if item_key == "q39":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct = {"c. The value of p is 70 and the value of q is 50.",
+                   "e. The value of r plus p is 130."}
+        if user_set == correct:
+            return 2
+        if user_set == {"c. The value of p is 70 and the value of q is 50."} or \
+           user_set == {"e. The value of r plus p is 130."}:
+            return 1
+        return 0
+
+    # Item 40 (multiselect)
+    if item_key == "q40":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct = {"c. The exterior angle and one of the interior angles adjacent to it form a linear pair.",
+                   "d. The measure of the exterior angle of a triangle is equal to the sum of the two remote interior angles."}
+        if user_set == correct:
+            return 2
+        if user_set == {"c. The exterior angle and one of the interior angles adjacent to it form a linear pair."} or \
+           user_set == {"d. The measure of the exterior angle of a triangle is equal to the sum of the two remote interior angles."}:
+            return 1
+        return 0
+
+    # Item 41 (multiselect)
+    if item_key == "q41":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct = {"a. The other two sides are 1.5 meters each."}
+        return 1 if user_set == correct else 0
+
+    # Item 42
+    if item_key == "q42":
+        return 2 if ans == "c) Yes, because the triangles are similar (parallel sides)." else 0
+
+    # Item 43 (multiselect)
+    if item_key == "q43":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct = {"a. The other two sides are 37.5 centimeters each."}
+        return 1 if user_set == correct else 0
+
+    # Item 44
+    if item_key == "q44":
+        return 3 if ans == "d) 34.54 sq m" else 0
+
+    # Item 45 (list from checkboxes)
+    if item_key == "q45":
+        user_set = set(ans) if isinstance(ans, list) else set()
+        correct = {"d. (25π(2.1))/2 cubic meters"}
+        return 1 if user_set == correct else 0
+
+    # Item 46
+    if item_key == "q46":
+        return 2 if ans == "d) Both a and b are correct" else 0
+
+    # Item 47
+    if item_key == "q47":
+        return 2 if ans == "b) 1800°" else 0
+
+    return 0
+
+def compute_all_scores():
+    """Return dict of item->score and total score."""
+    scores = {}
+    total = 0
+    for i in range(1, 48):
+        key = f"q{i}"
+        ans = st.session_state.get(key, None)
+        if key == "q45":
+            ans = st.session_state.get("q45", [])
+        score = score_item(key, ans, st.session_state)
+        scores[key] = score
+        total += score
+    return scores, total
+
 # --- HEADER ---
 st.title("Rapid Mathematics Assessment (Grades 7 - 10)")
 st.write("---")
@@ -712,291 +999,3 @@ with tabs[3]:
                     for i in range(1,48):
                         key = f"q{i}"
                         st.write(f"**{key.upper()}:** {scores.get(key,0)}")
-
-# =============================================================================
-# SCORING ENGINE (based on official RMA scoring guide)
-# =============================================================================
-
-def score_item(item_key, ans, all_answers):
-    """Return points earned for a given item (0,1,2,3)."""
-    # Helper to check if answer is empty
-    if ans is None or ans == "" or (isinstance(ans, list) and len(ans)==0):
-        return 0
-
-    # Item 1
-    if item_key == "q1":
-        return 2 if ans == "a) 1" else 0
-
-    # Item 2
-    if item_key == "q2":
-        return 1 if ans == "b) 6 × 6 - 7 × 5" else 0
-
-    # Item 3 (multiselect)
-    if item_key == "q3":
-        correct_set = {"b. (n)(n) - [(n + 1)(n - 1)]", "c. (n - 1)(n - 1) - n(n - 2)"}
-        user_set = set(ans) if isinstance(ans, list) else set()
-        if user_set == correct_set:
-            return 2
-        if user_set == {"b. (n)(n) - [(n + 1)(n - 1)]"} or user_set == {"c. (n - 1)(n - 1) - n(n - 2)"}:
-            return 1
-        return 0
-
-    # Item 4
-    if item_key == "q4":
-        return 2 if ans == "c) Because they all simplify to 1." else 0
-
-    # Item 5
-    if item_key == "q5":
-        return 1 if ans == "d) The first number in each numerical expression (2,3,4,...)" else 0
-
-    # Item 6
-    if item_key == "q6":
-        return 2 if ans == "a) 1024 = 2¹⁰" else 0
-
-    # Item 7
-    if item_key == "q7":
-        return 1 if ans == "b) 2¹⁰" else 0
-
-    # Item 8 (two correct options)
-    if item_key == "q8":
-        return 1 if ans in ["b) 64", "c) 128"] else 0
-
-    # Item 9
-    if item_key == "q9":
-        return 1 if ans == "a) 0.9985" else 0
-
-    # Item 10
-    if item_key == "q10":
-        return 2 if ans == "b) 0.001" else 0
-
-    # Item 11
-    if item_key == "q11":
-        return 2 if ans == "c) 7/8" else 0
-
-    # Item 12
-    if item_key == "q12":
-        return 1 if ans == "d) 5" else 0
-
-    # Item 13
-    if item_key == "q13":
-        return 1 if ans == "a) There are five points with y‑coordinates below 84." else 0
-
-    # Item 14 (multiselect)
-    if item_key == "q14":
-        correct_set = {"b. As the number of absences decreases, the overall academic grade increases.",
-                       "c. As the number of absences increases, the overall academic grade decreases."}
-        user_set = set(ans) if isinstance(ans, list) else set()
-        if user_set == correct_set:
-            return 2
-        if user_set == {"b. As the number of absences decreases, the overall academic grade increases."} or \
-           user_set == {"c. As the number of absences increases, the overall academic grade decreases."}:
-            return 1
-        return 0
-
-    # Item 15
-    if item_key == "q15":
-        return 2 if ans == "b) Purok 1, because its income range is larger." else 0
-
-    # Item 16
-    if item_key == "q16":
-        return 2 if ans == "c) No, because Purok 1 has greater variability, so the average doesn't reflect most families." else 0
-
-    # Item 17
-    if item_key == "q17":
-        return 1 if ans == "d) 49" else 0
-
-    # Item 18
-    if item_key == "q18":
-        return 1 if ans == "a) 19" else 0
-
-    # Item 19
-    if item_key == "q19":
-        return 1 if ans == "b) 18/110" else 0
-
-    # Item 20
-    if item_key == "q20":
-        return 1 if ans == "c) How many students participated only in music?" else 0
-
-    # Item 21 (multiselect)
-    if item_key == "q21":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"c. Point F is at -300"}
-        return 1 if user_set == correct else 0
-
-    # Item 22
-    if item_key == "q22":
-        return 1 if ans == "d) 0" else 0
-
-    # Item 23
-    if item_key == "q23":
-        return 1 if ans == "a) (4,4)" else 0
-
-    # Item 24 (multiselect)
-    if item_key == "q24":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct_options = {"b. (1, -2)", "d. (3, 2)", "f. (5, 6)"}
-        if len(user_set) == 2 and user_set.issubset(correct_options):
-            return 2
-        if len(user_set) == 1 and user_set.issubset(correct_options):
-            return 1
-        return 0
-
-    # Item 25 (multiselect)
-    if item_key == "q25":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"e. (x, -x + 2)"}
-        return 1 if user_set == correct else 0
-
-    # Item 26
-    if item_key == "q26":
-        return 2 if ans == "b) 12 square units" else 0
-
-    # Item 27
-    if item_key == "q27":
-        return 1 if ans == "c) School" else 0
-
-    # Item 28
-    if item_key == "q28":
-        return 2 if ans == "d) Using distance formula, AB is shorter." else 0
-
-    # Item 29 (multiselect)
-    if item_key == "q29":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"-5", "-27", "99"}
-        if user_set == correct:
-            return 3
-        if len(user_set) == 2 and user_set.issubset(correct):
-            return 2
-        if len(user_set) == 1 and user_set.issubset(correct):
-            return 1
-        return 0
-
-    # Item 30 (multiselect)
-    if item_key == "q30":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"d. cost = 100n/3", "e. 3 : 100 = n : cost"}
-        if user_set == correct:
-            return 2
-        if user_set == {"d. cost = 100n/3"} or user_set == {"e. 3 : 100 = n : cost"}:
-            return 1
-        return 0
-
-    # Item 31
-    if item_key == "q31":
-        return 2 if ans == "d) All of the above" else 0
-
-    # Item 32 (multiselect)
-    if item_key == "q32":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"c. The difference between b and a, (b-a), is 14."}
-        return 1 if user_set == correct else 0
-
-    # Item 33 (multiselect)
-    if item_key == "q33":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"c. If we add 3y to both sides of equation ①, the equation will remain true."}
-        return 1 if user_set == correct else 0
-
-    # Item 34
-    if item_key == "q34":
-        return 1 if ans == "a) 1250" else 0
-
-    # Item 35 (multiselect)
-    if item_key == "q35":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"a. The daily cost of renting the tricycle."}
-        return 1 if user_set == correct else 0
-
-    # Item 36
-    if item_key == "q36":
-        return 1 if ans == "b) Fixed cost" else 0
-
-    # Item 37 (multiselect)
-    if item_key == "q37":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"b. y-intercept"}
-        return 1 if user_set == correct else 0
-
-    # Item 38 (multiselect)
-    if item_key == "q38":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"a. q = 10 and r = 140", "e. q = 100 and r = 50"}
-        if user_set == correct:
-            return 2
-        if user_set == {"a. q = 10 and r = 140"} or user_set == {"e. q = 100 and r = 50"}:
-            return 1
-        return 0
-
-    # Item 39 (multiselect)
-    if item_key == "q39":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"c. The value of p is 70 and the value of q is 50.",
-                   "e. The value of r plus p is 130."}
-        if user_set == correct:
-            return 2
-        if user_set == {"c. The value of p is 70 and the value of q is 50."} or \
-           user_set == {"e. The value of r plus p is 130."}:
-            return 1
-        return 0
-
-    # Item 40 (multiselect)
-    if item_key == "q40":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"c. The exterior angle and one of the interior angles adjacent to it form a linear pair.",
-                   "d. The measure of the exterior angle of a triangle is equal to the sum of the two remote interior angles."}
-        if user_set == correct:
-            return 2
-        if user_set == {"c. The exterior angle and one of the interior angles adjacent to it form a linear pair."} or \
-           user_set == {"d. The measure of the exterior angle of a triangle is equal to the sum of the two remote interior angles."}:
-            return 1
-        return 0
-
-    # Item 41 (multiselect)
-    if item_key == "q41":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"a. The other two sides are 1.5 meters each."}
-        return 1 if user_set == correct else 0
-
-    # Item 42
-    if item_key == "q42":
-        return 2 if ans == "c) Yes, because the triangles are similar (parallel sides)." else 0
-
-    # Item 43 (multiselect)
-    if item_key == "q43":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"a. The other two sides are 37.5 centimeters each."}
-        return 1 if user_set == correct else 0
-
-    # Item 44
-    if item_key == "q44":
-        return 3 if ans == "d) 34.54 sq m" else 0
-
-    # Item 45 (list from checkboxes)
-    if item_key == "q45":
-        user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"d. (25π(2.1))/2 cubic meters"}
-        return 1 if user_set == correct else 0
-
-    # Item 46
-    if item_key == "q46":
-        return 2 if ans == "d) Both a and b are correct" else 0
-
-    # Item 47
-    if item_key == "q47":
-        return 2 if ans == "b) 1800°" else 0
-
-    return 0
-
-def compute_all_scores():
-    """Return dict of item->score and total score."""
-    scores = {}
-    total = 0
-    for i in range(1, 48):
-        key = f"q{i}"
-        ans = st.session_state.get(key, None)
-        if key == "q45":
-            ans = st.session_state.get("q45", [])
-        score = score_item(key, ans, st.session_state)
-        scores[key] = score
-        total += score
-    return scores, total
