@@ -956,12 +956,12 @@ def compute_all_scores():
 # --- FOOTER: SUBMISSION AND RESULTS (after Item 47) ---
 st.divider()
 
-# Submit button and summary placed after all tabs
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
     if st.button("✅ Complete Assessment", use_container_width=True):
-        if not st.session_state.surname or not st.session_state.given_name:
-            st.warning("Please enter your surname and given name before submitting.")
+        # Require all three name fields
+        if not st.session_state.surname or not st.session_state.given_name or not st.session_state.middle_name:
+            st.warning("Please enter your surname, given name, and middle name before submitting.")
         else:
             st.balloons()
             st.success("Responses submitted successfully!")
