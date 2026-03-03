@@ -139,10 +139,20 @@ with tabs[0]:
     st.latex(r"5 \times 5 - 6 \times 4")
     
     st.markdown("1. Your classmate said that each of the four expressions in Box 1 is equivalent to 1. Verify what your classmate said by showing your computation for the number expression $4 \\times 4 - 5 \\times 3$.")
-    st.radio("Choose the correct result:", ["a) 1", "b) 2", "c) 0", "d) 3"], key="q1", index=None)
+    st.radio("Choose the correct result:", [
+        "a) 1",
+        "b) 2",
+        "c) 0",
+        "d) 3"
+    ], key="q1", index=None)
     
     st.markdown("2. What must be the next number expression to $5 \\times 5 - 6 \\times 4$ in Box 1?")
-    st.radio("Choose the next expression:", ["a) 6 × 6 - 7 × 5", "b) 7 × 7 - 8 × 6", "c) 5 × 5 - 6 × 4", "d) 8 × 8 - 9 × 7"], key="q2", index=None)
+    st.radio("Choose the next expression:", [
+        "a) 7 × 7 - 8 × 6",
+        "b) 6 × 6 - 7 × 5",
+        "c) 5 × 5 - 6 × 4",
+        "d) 8 × 8 - 9 × 7"
+    ], key="q2", index=None)
     
     st.markdown("3. Which of the following algebraic expressions represents the set of number expressions in Box 1? **(Select all that apply)**")
     st.multiselect("Select your answer(s):", [
@@ -155,18 +165,18 @@ with tabs[0]:
     
     st.markdown("4. Explain or show why you think you have chosen the correct algebraic expressions for the set of number expressions in Box 1.")
     st.radio("Choose the best explanation:", [
-        "a) Because they all simplify to 1.",
-        "b) Because they generate the same numbers.",
-        "c) Because n represents the first number.",
+        "a) Because they generate the same numbers.",
+        "b) Because n represents the first number.",
+        "c) Because they all simplify to 1.",
         "d) Because they are algebraic expressions."
     ], key="q4", index=None)
     
     st.markdown("5. What does $n$ represent in your chosen expression in item 3?")
     st.radio("Choose the correct meaning:", [
-        "a) The first number in each numerical expression (2,3,4,...)",
-        "b) The second number",
-        "c) The result",
-        "d) The exponent"
+        "a) The second number",
+        "b) The result",
+        "c) The exponent",
+        "d) The first number in each numerical expression (2,3,4,...)"
     ], key="q5", index=None)
     
     st.divider()
@@ -192,8 +202,8 @@ with tabs[0]:
     
     st.markdown("7. Write the exponential form of 1024.")
     st.radio("Exponential form:", [
-        "a) 2¹⁰",
-        "b) 2⁹",
+        "a) 2⁹",
+        "b) 2¹⁰",
         "c) 2⁸",
         "d) 2⁷"
     ], key="q7", index=None)
@@ -201,9 +211,9 @@ with tabs[0]:
     st.markdown("8. Find a number that is a power of 2 that meets **BOTH** of these conditions:")
     st.markdown("* The number is a multiple of 16.  \n* The number is also more than 50 but less than 200.")
     st.radio("Choose the correct number:", [
-        "a) 64",
-        "b) 128",
-        "c) 32",
+        "a) 32",
+        "b) 64",
+        "c) 128",
         "d) 256"
     ], key="q8", index=None)
     
@@ -217,17 +227,17 @@ with tabs[0]:
     
     st.markdown("10. Show how you will subtract 0.998 from 0.999.")
     st.radio("What is the result?", [
-        "a) 0.001",
-        "b) 0.0001",
+        "a) 0.0001",
+        "b) 0.001",
         "c) 0.01",
         "d) 0.1"
     ], key="q10", index=None)
     
     st.markdown("11. Is there a fraction that is greater than $\\frac{3}{4}$ but less than 1? If YES, give one example. If NO, explain why you think so.")
     st.radio("Choose a correct fraction:", [
-        "a) 7/8",
-        "b) 3/4",
-        "c) 1/2",
+        "a) 3/4",
+        "b) 1/2",
+        "c) 7/8",
         "d) 1"
     ], key="q11", index=None)
 
@@ -242,10 +252,10 @@ with tabs[1]:
     
     st.markdown("12. How many students had an overall academic grade below 84? [Refer to Figure 1]")
     st.radio("Number of students:", [
-        "a) 5",
-        "b) 4",
-        "c) 6",
-        "d) 7"
+        "a) 4",
+        "b) 6",
+        "c) 7",
+        "d) 5"
     ], key="q12", index=None)
     
     st.markdown("13. Explain why you think your answer in item 12 is correct based on the information shown in the graph in Figure 1.")
@@ -273,17 +283,17 @@ with tabs[1]:
     
     st.markdown("15. Based on the graph in Figure 2, which of the two puroks shows more diversity in monthly family income? Explain or justify your answer.")
     st.radio("Choose the correct statement:", [
-        "a) Purok 1, because its income range is larger.",
-        "b) Purok 2, because its incomes are more spread out.",
+        "a) Purok 2, because its incomes are more spread out.",
+        "b) Purok 1, because its income range is larger.",
         "c) Purok 1, because it has more bars.",
         "d) Purok 2, because it has higher incomes."
     ], key="q15", index=None)
     
     st.markdown("16. The average monthly income of the families in Purok 1 and Purok 2 are equal. Should both purok be given the same amount of financial aid? What information in the graph in Figure 2 did you base your decision on?")
     st.radio("Choose the best decision and reason:", [
-        "a) No, because Purok 1 has greater variability, so the average doesn't reflect most families.",
-        "b) Yes, because they have the same average.",
-        "c) No, because Purok 2 has more families.",
+        "a) Yes, because they have the same average.",
+        "b) No, because Purok 2 has more families.",
+        "c) No, because Purok 1 has greater variability, so the average doesn't reflect most families.",
         "d) Yes, because both have same total income."
     ], key="q16", index=None)
     
@@ -302,10 +312,10 @@ with tabs[1]:
     
     st.markdown("17. How many students participated in the music activity?")
     st.radio("Number:", [
-        "a) 49",
-        "b) 60",
-        "c) 18",
-        "d) 31"
+        "a) 60",
+        "b) 18",
+        "c) 31",
+        "d) 49"
     ], key="q17", index=None)
     
     st.markdown("18. How many students did not participate in any of the two activities?")
@@ -318,17 +328,17 @@ with tabs[1]:
     
     st.markdown("19. What is the probability of selecting a student who participated in both music and sports activities?")
     st.radio("Probability:", [
-        "a) 18/110",
-        "b) 49/110",
+        "a) 49/110",
+        "b) 18/110",
         "c) 60/110",
         "d) 31/110"
     ], key="q19", index=None)
     
     st.markdown("20. Write a question that can be answered using the information in Table 2.")
     st.radio("Choose a question that can be answered:", [
-        "a) How many students participated only in music?",
-        "b) Why did students not participate?",
-        "c) What is the average age of participants?",
+        "a) Why did students not participate?",
+        "b) What is the average age of participants?",
+        "c) How many students participated only in music?",
         "d) How many students are in Grade 7?"
     ], key="q20", index=None)
     
@@ -351,10 +361,10 @@ with tabs[1]:
     
     st.markdown("22. What is the position of point G in Figure 3?")
     st.radio("Position of G:", [
-        "a) 0",
-        "b) 100",
-        "c) 200",
-        "d) -100"
+        "a) 100",
+        "b) 200",
+        "c) -100",
+        "d) 0"
     ], key="q22", index=None)
 
 # === TAB 3: Items 23-33 ===
@@ -395,26 +405,26 @@ with tabs[2]:
     
     st.markdown("26. In Figure 4, connecting the points A, B and C will form a triangle, called triangle ABC. What is the area of triangle ABC? Show your method for getting the area.")
     st.radio("Area of triangle ABC:", [
-        "a) 12 square units",
-        "b) 10 square units",
+        "a) 10 square units",
+        "b) 12 square units",
         "c) 14 square units",
         "d) 8 square units"
     ], key="q26", index=None)
     
     st.markdown("27. A point represents position. Suppose in Figure 4, point A represents the position of your house, point B represents the position of your school and point C represents the position of the barangay hall. There is a straight road that you can take to the school and the barangay hall from your house. Which is the shorter walk from your house, going to the school or to the barangay hall?")
     st.radio("Shorter walk:", [
-        "a) School",
-        "b) Barangay hall",
-        "c) They are equal",
+        "a) Barangay hall",
+        "b) They are equal",
+        "c) School",
         "d) Cannot determine"
     ], key="q27", index=None)
     
     st.markdown("28. Show or explain how you determined your answer in item 27.")
     st.radio("Best explanation:", [
-        "a) Using distance formula, AB is shorter.",
-        "b) By measuring with a ruler.",
-        "c) Because the school is closer.",
-        "d) Because the barangay hall is farther."
+        "a) By measuring with a ruler.",
+        "b) Because the school is closer.",
+        "c) Because the barangay hall is farther.",
+        "d) Using distance formula, AB is shorter."
     ], key="q28", index=None)
     
     st.divider()
@@ -495,8 +505,8 @@ with tabs[3]:
     
     st.markdown("36. In Figure 5, what does the number 200 in the formula represent?")
     st.radio("200 represents:", [
-        "a) Fixed cost",
-        "b) Daily rate",
+        "a) Daily rate",
+        "b) Fixed cost",
         "c) Total cost",
         "d) Number of days"
     ], key="q36", index=None)
@@ -563,9 +573,9 @@ with tabs[3]:
     
     st.markdown("42. In Figure 7, are the sides of the triangular dog house proportional to the sides of the triangular toy storage? Show your solution or explain your answer.")
     st.radio("Are they proportional?", [
-        "a) Yes, because the triangles are similar (parallel sides).",
-        "b) No, because the sizes are different.",
-        "c) Yes, because they are both triangles.",
+        "a) No, because the sizes are different.",
+        "b) Yes, because they are both triangles.",
+        "c) Yes, because the triangles are similar (parallel sides).",
         "d) No, because the ratios are not equal."
     ], key="q42", index=None)
     
@@ -591,10 +601,10 @@ with tabs[3]:
     
     st.markdown("44. What is the area of the sidewalk in square meters surrounding the pool? Show your solution. [Refer to Figure 8] Use $\\pi = 3.14$.")
     st.radio("Area of sidewalk:", [
-        "a) 34.54 sq m",
-        "b) 31.4 sq m",
-        "c) 28.26 sq m",
-        "d) 37.68 sq m"
+        "a) 31.4 sq m",
+        "b) 28.26 sq m",
+        "c) 37.68 sq m",
+        "d) 34.54 sq m"
     ], key="q44", index=None)
     
     # Item 45 (two-column layout)
@@ -649,8 +659,8 @@ with tabs[3]:
     
     st.markdown("47. How many degrees did the wheel's pin rotate after 5 rolls? [Refer to Figure 10]")
     st.radio("Degrees rotated:", [
-        "a) 1800°",
-        "b) 360°",
+        "a) 360°",
+        "b) 1800°",
         "c) 720°",
         "d) 900°"
     ], key="q47", index=None)
@@ -671,7 +681,7 @@ def score_item(item_key, ans, all_answers):
 
     # Item 2
     if item_key == "q2":
-        return 1 if ans == "a) 6 × 6 - 7 × 5" else 0
+        return 1 if ans == "b) 6 × 6 - 7 × 5" else 0
 
     # Item 3 (multiselect)
     if item_key == "q3":
@@ -685,11 +695,11 @@ def score_item(item_key, ans, all_answers):
 
     # Item 4
     if item_key == "q4":
-        return 2 if ans == "a) Because they all simplify to 1." else 0
+        return 2 if ans == "c) Because they all simplify to 1." else 0
 
     # Item 5
     if item_key == "q5":
-        return 1 if ans == "a) The first number in each numerical expression (2,3,4,...)" else 0
+        return 1 if ans == "d) The first number in each numerical expression (2,3,4,...)" else 0
 
     # Item 6
     if item_key == "q6":
@@ -697,11 +707,11 @@ def score_item(item_key, ans, all_answers):
 
     # Item 7
     if item_key == "q7":
-        return 1 if ans == "a) 2¹⁰" else 0
+        return 1 if ans == "b) 2¹⁰" else 0
 
     # Item 8 (two correct options)
     if item_key == "q8":
-        return 1 if ans in ["a) 64", "b) 128"] else 0
+        return 1 if ans in ["b) 64", "c) 128"] else 0
 
     # Item 9
     if item_key == "q9":
@@ -709,15 +719,15 @@ def score_item(item_key, ans, all_answers):
 
     # Item 10
     if item_key == "q10":
-        return 2 if ans == "a) 0.001" else 0
+        return 2 if ans == "b) 0.001" else 0
 
     # Item 11
     if item_key == "q11":
-        return 2 if ans == "a) 7/8" else 0
+        return 2 if ans == "c) 7/8" else 0
 
     # Item 12
     if item_key == "q12":
-        return 1 if ans == "a) 5" else 0
+        return 1 if ans == "d) 5" else 0
 
     # Item 13
     if item_key == "q13":
@@ -737,15 +747,15 @@ def score_item(item_key, ans, all_answers):
 
     # Item 15
     if item_key == "q15":
-        return 2 if ans == "a) Purok 1, because its income range is larger." else 0
+        return 2 if ans == "b) Purok 1, because its income range is larger." else 0
 
     # Item 16
     if item_key == "q16":
-        return 2 if ans == "a) No, because Purok 1 has greater variability, so the average doesn't reflect most families." else 0
+        return 2 if ans == "c) No, because Purok 1 has greater variability, so the average doesn't reflect most families." else 0
 
     # Item 17
     if item_key == "q17":
-        return 1 if ans == "a) 49" else 0
+        return 1 if ans == "d) 49" else 0
 
     # Item 18
     if item_key == "q18":
@@ -753,11 +763,11 @@ def score_item(item_key, ans, all_answers):
 
     # Item 19
     if item_key == "q19":
-        return 1 if ans == "a) 18/110" else 0
+        return 1 if ans == "b) 18/110" else 0
 
     # Item 20
     if item_key == "q20":
-        return 1 if ans == "a) How many students participated only in music?" else 0
+        return 1 if ans == "c) How many students participated only in music?" else 0
 
     # Item 21 (multiselect)
     if item_key == "q21":
@@ -767,7 +777,7 @@ def score_item(item_key, ans, all_answers):
 
     # Item 22
     if item_key == "q22":
-        return 1 if ans == "a) 0" else 0
+        return 1 if ans == "d) 0" else 0
 
     # Item 23
     if item_key == "q23":
@@ -791,15 +801,15 @@ def score_item(item_key, ans, all_answers):
 
     # Item 26
     if item_key == "q26":
-        return 2 if ans == "a) 12 square units" else 0
+        return 2 if ans == "b) 12 square units" else 0
 
     # Item 27
     if item_key == "q27":
-        return 1 if ans == "a) School" else 0
+        return 1 if ans == "c) School" else 0
 
     # Item 28
     if item_key == "q28":
-        return 2 if ans == "a) Using distance formula, AB is shorter." else 0
+        return 2 if ans == "d) Using distance formula, AB is shorter." else 0
 
     # Item 29 (multiselect)
     if item_key == "q29":
@@ -851,7 +861,7 @@ def score_item(item_key, ans, all_answers):
 
     # Item 36
     if item_key == "q36":
-        return 1 if ans == "a) Fixed cost" else 0
+        return 1 if ans == "b) Fixed cost" else 0
 
     # Item 37 (multiselect)
     if item_key == "q37":
@@ -901,7 +911,7 @@ def score_item(item_key, ans, all_answers):
 
     # Item 42
     if item_key == "q42":
-        return 2 if ans == "a) Yes, because the triangles are similar (parallel sides)." else 0
+        return 2 if ans == "c) Yes, because the triangles are similar (parallel sides)." else 0
 
     # Item 43 (multiselect)
     if item_key == "q43":
@@ -911,7 +921,7 @@ def score_item(item_key, ans, all_answers):
 
     # Item 44
     if item_key == "q44":
-        return 3 if ans == "a) 34.54 sq m" else 0
+        return 3 if ans == "d) 34.54 sq m" else 0
 
     # Item 45 (list from checkboxes)
     if item_key == "q45":
@@ -925,7 +935,7 @@ def score_item(item_key, ans, all_answers):
 
     # Item 47
     if item_key == "q47":
-        return 2 if ans == "a) 1800°" else 0
+        return 2 if ans == "b) 1800°" else 0
 
     return 0
 
