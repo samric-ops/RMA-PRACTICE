@@ -36,10 +36,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- RESET SESSION STATE FOR ITEM 3 ---
-if 'q3' in st.session_state:
-    del st.session_state['q3']
-
 # --- FUNCTION TO DISPLAY FIGURES ---
 def display_figure(figure_num, description, image_path=None):
     """Display figure with optional image"""
@@ -845,12 +841,12 @@ def score_item(item_key, ans, all_answers):
 
     # Item 34
     if item_key == "q34":
-        return 1 if ans == "a) 1250" else 0
+        return 1 if ans == "b) 1450" else 0
 
     # Item 35 (multiselect)
     if item_key == "q35":
         user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"a. The daily cost of renting the tricycle."}  # according to rubric, but check
+        correct = {"a. The daily cost of renting the tricycle."}
         return 1 if user_set == correct else 0
 
     # Item 36
@@ -892,7 +888,8 @@ def score_item(item_key, ans, all_answers):
                    "d. The measure of the exterior angle of a triangle is equal to the sum of the two remote interior angles."}
         if user_set == correct:
             return 2
-        if user_set == {"c. ..."} or user_set == {"d. ..."}:
+        if user_set == {"c. The exterior angle and one of the interior angles adjacent to it form a linear pair."} or \
+           user_set == {"d. The measure of the exterior angle of a triangle is equal to the sum of the two remote interior angles."}:
             return 1
         return 0
 
@@ -959,7 +956,7 @@ with col2:
             st.success("Responses submitted successfully!")
             
             scores, total_score = compute_all_scores()
-            max_possible = 72  # from scoring guide sum
+            max_possible = 71  # from scoring guide sum
             
             st.subheader("📋 Assessment Summary")
             st.write(f"**Student:** {st.session_state.surname}, {st.session_state.given_name} {st.session_state.middle_name}")
