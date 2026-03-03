@@ -665,6 +665,54 @@ with tabs[3]:
         "d) 900°"
     ], key="q47", index=None)
 
+    # --- SUBMIT BUTTON (placed after item 47) ---
+    st.divider()
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("✅ Submit Assessment", use_container_width=True):
+            if not st.session_state.surname or not st.session_state.given_name:
+                st.warning("Please enter your surname and given name before submitting.")
+            else:
+                st.balloons()
+                st.success("Responses submitted successfully!")
+                
+                # Compute scores
+                scores, total_score = compute_all_scores()
+                max_possible = 71  # from scoring guide sum
+                
+                st.subheader("📋 Assessment Summary")
+                st.write(f"**Student:** {st.session_state.surname}, {st.session_state.given_name} {st.session_state.middle_name}")
+                st.write(f"**Total Score:** {total_score} / {max_possible}  ({total_score/max_possible*100:.1f}%)")
+                
+                timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+                filename = f"RMA_{st.session_state.surname}_{st.session_state.given_name}_{timestamp}.txt"
+                lines = []
+                lines.append("RAPID MATHEMATICS ASSESSMENT RESULTS")
+                lines.append("="*50)
+                lines.append(f"Student: {st.session_state.surname}, {st.session_state.given_name} {st.session_state.middle_name}")
+                lines.append(f"Date: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}")
+                lines.append(f"Total Score: {total_score} / {max_possible} ({total_score/max_possible*100:.1f}%)")
+                lines.append("="*50)
+                lines.append("\nDETAILED SCORES:")
+                for i in range(1,48):
+                    key = f"q{i}"
+                    score = scores.get(key,0)
+                    lines.append(f"{key.upper()}: {score}")
+                lines.append("="*50)
+                content = "\n".join(lines)
+                
+                st.download_button(
+                    label="📥 Download Summary as Text File",
+                    data=content,
+                    file_name=filename,
+                    mime="text/plain"
+                )
+                
+                with st.expander("View Detailed Scores"):
+                    for i in range(1,48):
+                        key = f"q{i}"
+                        st.write(f"**{key.upper()}:** {scores.get(key,0)}")
+
 # =============================================================================
 # SCORING ENGINE (based on official RMA scoring guide)
 # =============================================================================
@@ -952,52 +1000,3 @@ def compute_all_scores():
         scores[key] = score
         total += score
     return scores, total
-
-# --- FOOTER: SUBMISSION AND RESULTS (after Item 47) ---
-st.divider()
-
-# Submit button and summary placed after all tabs
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    if st.button("✅ Complete Assessment", use_container_width=True):
-        if not st.session_state.surname or not st.session_state.given_name:
-            st.warning("Please enter your surname and given name before submitting.")
-        else:
-            st.balloons()
-            st.success("Responses submitted successfully!")
-            
-            scores, total_score = compute_all_scores()
-            max_possible = 71  # from scoring guide sum
-            
-            st.subheader("📋 Assessment Summary")
-            st.write(f"**Student:** {st.session_state.surname}, {st.session_state.given_name} {st.session_state.middle_name}")
-            st.write(f"**Total Score:** {total_score} / {max_possible}  ({total_score/max_possible*100:.1f}%)")
-            
-            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"RMA_{st.session_state.surname}_{st.session_state.given_name}_{timestamp}.txt"
-            lines = []
-            lines.append("RAPID MATHEMATICS ASSESSMENT RESULTS")
-            lines.append("="*50)
-            lines.append(f"Student: {st.session_state.surname}, {st.session_state.given_name} {st.session_state.middle_name}")
-            lines.append(f"Date: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}")
-            lines.append(f"Total Score: {total_score} / {max_possible} ({total_score/max_possible*100:.1f}%)")
-            lines.append("="*50)
-            lines.append("\nDETAILED SCORES:")
-            for i in range(1,48):
-                key = f"q{i}"
-                score = scores.get(key,0)
-                lines.append(f"{key.upper()}: {score}")
-            lines.append("="*50)
-            content = "\n".join(lines)
-            
-            st.download_button(
-                label="📥 Download Summary as Text File",
-                data=content,
-                file_name=filename,
-                mime="text/plain"
-            )
-            
-            with st.expander("View Detailed Scores"):
-                for i in range(1,48):
-                    key = f"q{i}"
-                    st.write(f"**{key.upper()}:** {scores.get(key,0)}")
