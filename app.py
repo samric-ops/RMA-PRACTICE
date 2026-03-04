@@ -258,10 +258,10 @@ def score_item(item_key, ans, all_answers):
     if item_key == "q36":
         return 1 if ans == "b) Fixed cost" else 0
 
-    # Item 37 (multiselect)
+    # Item 37 (multiselect)  *** UPDATED PER USER REQUEST ***
     if item_key == "q37":
         user_set = set(ans) if isinstance(ans, list) else set()
-        correct = {"b. y-intercept"}
+        correct = {"c. slope"}  # Changed from y-intercept to slope
         return 1 if user_set == correct else 0
 
     # Item 38 (multiselect)
