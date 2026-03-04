@@ -971,29 +971,53 @@ with tabs[3]:
                 st.write(f"**Student:** {st.session_state.surname}, {st.session_state.given_name} {st.session_state.middle_name}")
                 st.write(f"**Total Score:** {total_score} / {max_possible}  ({total_score/max_possible*100:.1f}%)")
                 
+                # --- Generate Text Summary (existing) ---
                 timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-                filename = f"RMA_{st.session_state.surname}_{st.session_state.given_name}_{timestamp}.txt"
-                lines = []
-                lines.append("RAPID MATHEMATICS ASSESSMENT RESULTS")
-                lines.append("="*50)
-                lines.append(f"Student: {st.session_state.surname}, {st.session_state.given_name} {st.session_state.middle_name}")
-                lines.append(f"Date: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}")
-                lines.append(f"Total Score: {total_score} / {max_possible} ({total_score/max_possible*100:.1f}%)")
-                lines.append("="*50)
-                lines.append("\nDETAILED SCORES:")
+                txt_filename = f"RMA_{st.session_state.surname}_{st.session_state.given_name}_{timestamp}.txt"
+                txt_lines = []
+                txt_lines.append("RAPID MATHEMATICS ASSESSMENT RESULTS")
+                txt_lines.append("="*50)
+                txt_lines.append(f"Student: {st.session_state.surname}, {st.session_state.given_name} {st.session_state.middle_name}")
+                txt_lines.append(f"Date: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}")
+                txt_lines.append(f"Total Score: {total_score} / {max_possible} ({total_score/max_possible*100:.1f}%)")
+                txt_lines.append("="*50)
+                txt_lines.append("\nDETAILED SCORES:")
                 for i in range(1,48):
                     key = f"q{i}"
                     score = scores.get(key,0)
-                    lines.append(f"{key.upper()}: {score}")
-                lines.append("="*50)
-                content = "\n".join(lines)
+                    txt_lines.append(f"{key.upper()}: {score}")
+                txt_lines.append("="*50)
+                txt_content = "\n".join(txt_lines)
                 
-                st.download_button(
-                    label="📥 Download Summary as Text File",
-                    data=content,
-                    file_name=filename,
-                    mime="text/plain"
-                )
+                # --- Generate CSV (Excel compatible) ---
+                csv_filename = f"RMA_{st.session_state.surname}_{st.session_state.given_name}_{timestamp}.csv"
+                csv_lines = []
+                csv_lines.append(f"Student,{st.session_state.surname}, {st.session_state.given_name} {st.session_state.middle_name}")
+                csv_lines.append(f"Date,{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}")
+                csv_lines.append(f"Total Score,{total_score},{max_possible},{total_score/max_possible*100:.1f}%")
+                csv_lines.append("Item,Score")
+                for i in range(1,48):
+                    key = f"q{i}"
+                    score = scores.get(key,0)
+                    csv_lines.append(f"{key},{score}")
+                csv_content = "\n".join(csv_lines)
+                
+                # Two download buttons side by side
+                col_dl1, col_dl2 = st.columns(2)
+                with col_dl1:
+                    st.download_button(
+                        label="📥 Download Text Summary",
+                        data=txt_content,
+                        file_name=txt_filename,
+                        mime="text/plain"
+                    )
+                with col_dl2:
+                    st.download_button(
+                        label="📥 Download CSV (Excel)",
+                        data=csv_content,
+                        file_name=csv_filename,
+                        mime="text/csv"
+                    )
                 
                 with st.expander("View Detailed Scores"):
                     for i in range(1,48):
