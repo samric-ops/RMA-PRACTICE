@@ -92,14 +92,14 @@ def score_item(item_key, ans, all_answers):
     if item_key == "q4":
         return 2 if ans == "c) Because they all simplify to 1." else 0
 
-    # Item 5 – MODIFIED to depend on choices in Item 3
+    # Item 5 – REVISED with four options and dependency on Item 3
     if item_key == "q5":
         q3_choices = all_answers.get("q3", [])
         if ans is None:
             return 0
-        # Define answer labels that correspond to "first number" and "third number"
-        first_num_answers = ["d) The first number in the numerical expression (e.g., 2, 3, 4, …)"]
-        third_num_answers = ["e) The third number in the numerical expression (e.g., 3, 4, 5, …)"]
+        # Define correct answer labels based on the new four options
+        first_num_answers = ["c) The first number in the numerical expression"]
+        third_num_answers = ["d) The third number in the numerical expression"]
 
         selected_b = "b. (n)(n) - [(n + 1)(n - 1)]" in q3_choices
         selected_c = "c. (n - 1)(n - 1) - n(n - 2)" in q3_choices
@@ -475,16 +475,15 @@ with tabs[0]:
         "d) Because they are algebraic expressions."
     ], key="q4", index=None)
     
-    # --- MODIFIED ITEM 5 ---
+    # --- REVISED ITEM 5 (four options only) ---
     st.markdown("5. What does $n$ represent in your chosen expression in item 3?")
     st.radio("Choose the correct meaning:", [
         "a) The second number in the numerical expression",
         "b) The result of the expression",
-        "c) The exponent",
-        "d) The first number in the numerical expression (e.g., 2, 3, 4, …)",
-        "e) The third number in the numerical expression (e.g., 3, 4, 5, …)"
+        "c) The first number in the numerical expression",
+        "d) The third number in the numerical expression"
     ], key="q5", index=None)
-    # --- END MODIFICATION ---
+    # --- END REVISION ---
     
     st.divider()
     st.subheader("Powers and Rational Numbers")
