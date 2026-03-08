@@ -92,24 +92,22 @@ def score_item(item_key, ans, all_answers):
     if item_key == "q4":
         return 2 if ans == "c) Because they all simplify to 1." else 0
 
-    # Item 5 – REVISED with four options and dependency on Item 3
+    # Item 5 – REVISED with letter-based checking (robust to label variations)
     if item_key == "q5":
         q3_choices = all_answers.get("q3", [])
         if ans is None:
             return 0
-        # Define correct answer labels based on the new four options
-        first_num_answers = ["c) The first number in the numerical expression"]
-        third_num_answers = ["d) The third number in the numerical expression"]
-
+        # Get the first character of the answer (the letter)
+        ans_letter = ans[0] if ans else ''
         selected_b = "b. (n)(n) - [(n + 1)(n - 1)]" in q3_choices
         selected_c = "c. (n - 1)(n - 1) - n(n - 2)" in q3_choices
 
         if selected_b and not selected_c:
-            return 1 if ans in first_num_answers else 0
+            return 1 if ans_letter == 'c' else 0
         elif selected_c and not selected_b:
-            return 1 if ans in third_num_answers else 0
+            return 1 if ans_letter == 'd' else 0
         elif selected_b and selected_c:
-            return 1 if ans in first_num_answers or ans in third_num_answers else 0
+            return 1 if ans_letter in ['c', 'd'] else 0
         else:
             return 0
 
